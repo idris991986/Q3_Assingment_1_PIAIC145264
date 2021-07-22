@@ -26,7 +26,6 @@ contract ParentVehicle{
 Cars
 Truck
 MotorCycle,
-
 (The contract shall override the Service Method to return, w Cars/ Truck/ Motor Cycle is being serviced)
 */
 contract Car is ParentVehicle{
@@ -69,8 +68,21 @@ function “vehicleService that takes the address of the deployed
 contracts of step 3, in the “Vehicle” variable to call the service
 function
 */
-contract ServiceStation{
-    function vehicleService(ParentVehicle _Vehicle) public returns (string memory){
-        return _Vehicle.service();
+contract ServiceStationCars{
+    function vehicleService(address _Vehicle) public returns (string memory){
+        AltoMehran vehicle = AltoMehran(_Vehicle);
+        return vehicle.service();
+    } 
+}
+contract ServiceStationTrucks{
+    function vehicleService(address _Vehicle) public returns (string memory){
+        Hino vehicle = Hino(_Vehicle);
+        return vehicle.service();
+    } 
+}   
+contract ServiceStationMotorCycles{
+    function vehicleService(address _Vehicle) public returns (string memory){
+        Yamaha vehicle = Yamaha(_Vehicle);
+        return vehicle.service();
     } 
 }
